@@ -10,7 +10,8 @@ class DCCCommand {
         void address(int newAddress);
         void setSpeed(int newSpeed);
         void sendForward(bool isForward);
-        void convertToBitPattern();
+        void assemble();
+        void send();
         void display();
     private:
         int _address;
@@ -24,6 +25,7 @@ class DCCCommand {
         uint8_t _dccBitPattern[18];
         byte _dccBit;
 
+        void _convertToBitPattern();
         void _addBit(byte bit);
         void _addPreamble();
         void _addAddress();

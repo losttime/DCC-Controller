@@ -13,13 +13,12 @@ void setup() {
     command.address(79);
     command.setSpeed(10);
     command.sendForward(true);
-    command.display();
-    command.convertToBitPattern();
-    command.display();
-//    dcc.queueCommand();
+    
+    dcc.queueCommand(command);
 //    dcc.showPinAssignments();
 }
 
 void loop() {
     // Here is where we listen for commands and send them to the processor
 }
+

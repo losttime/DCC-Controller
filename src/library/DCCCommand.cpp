@@ -32,7 +32,19 @@ void DCCCommand::sendForward(bool isForward) {
     _forward = isForward;
 }
 
-void DCCCommand::convertToBitPattern() {
+void DCCCommand::assemble() {
+    _convertToBitPattern();
+}
+
+void DCCCommand::send() {
+    _convertToBitPattern();
+}
+
+
+
+
+
+void DCCCommand::_convertToBitPattern() {
     _bit = 0;
     _addPreamble();
     _addBit(0);
@@ -48,16 +60,8 @@ void DCCCommand::_addBit(byte bit) {
     // If adding a 1, set the next bit to a 1.
     // Otherwise, set the next bit to a 0.
     if (bit == 1) {
-        Serial.print("Adding 1 to byte ");
-        Serial.print(_bit>>3);
-        Serial.print(" position ");
-        Serial.println(_bit & 7);
         bitSet(_bitPattern[_bit>>3], _bit & 7);
     } else {
-        Serial.print("Adding 0 to byte ");
-        Serial.print(_bit>>3);
-        Serial.print(" position ");
-        Serial.println(_bit & 7);
         bitClear(_bitPattern[_bit>>3], _bit & 7);
     }
     _bit++;
