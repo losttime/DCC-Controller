@@ -9,8 +9,6 @@
 
 class DCC {
     public:
-        DCCCommand *priorityQueue;
-        DCCCommand *standardQueue;
         byte writePos;
 
         DCC();
@@ -22,8 +20,11 @@ class DCC {
         int _pinA;
         int _pinB;
 
+        uint16_t _short_count;
+        uint16_t _long_count;
+
         void _prepareQueues();
-        void initializeTimer();
+        void _initializeTimer();
 };
 
 #endif
