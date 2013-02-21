@@ -83,9 +83,8 @@ void DCC::_initializeTimer() {
     TCCR1B = (0<<ICNC1)  | (0<<ICES1)  | (0<<WGM13)  | (1<<WGM12)  | (0<<CS12)  | (1<<CS11) | (0<<CS10);
 
     // set the timer length 58us
-    //OCR1A = OCR1B = _short_count;
-    OCR1A = 15624;
-
+    OCR1A = OCR1B = _short_count;
+    
     // force a toggle on OC1B so OC1B and OC1A will always
     // compliment each other
     TCCR1C |= (1<<FOC1B);
